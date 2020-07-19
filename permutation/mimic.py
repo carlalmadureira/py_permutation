@@ -3,61 +3,28 @@ from dataclasses import dataclass
 @dataclass
 class Mimic:
     """ classe responsavel por permutacao de palavras """ 
-    palavra: str 
+    palavra: str = None  
 
-    def permutacao(self): 
-        """ retorna sem repeticoes todas as permutacoes """ 
+    def permutacoes(self, palavra:str) -> list: 
+        """ retorna todas as permutacoes possiveis """ 
 
         ls_permutacao = list() 
         
-        if len(self.palavra) == 1: 
-            return self.palavra
+        if len(palavra) <= 1: 
+            return [palavra]
         
-        for _ in self.palavra: 
-            self.palavra = self.palavra.replace(_,'',1)
-            for a in self.permutacao():
-                ls_permutacao.append(_+a)
-            
+        for _ in palavra: 
+            letras_restantes = "".join([rest for rest in palavra if rest != _ ])
+            ls_permutacao.append(_)
+            ls_permutacao.append(letras_restantes)
+            [ls_permutacao.append(_ + i) for i in self.permutacoes(letras_restantes)] 
+                
         return set(ls_permutacao)
 
-    def fatorial(self, num:int) -> int: 
+    def numero_permutacoes(self, num:int) -> int: 
         """ retorna a quantidade possivel de permutacoes """ 
 
         if num == 1: 
             return 1 
 
-        return num * self.fatorial(num - 1) 
-        
-    def qtd_letras(self) -> int:
-
-       return len(self.palavra) 
-
-if __name__ == "__main__":
-    mimic = Mimic('palavra')
-    qtd = mimic.qtd_letras()
-    # print(mimic.fatorial(qtd))
-    # print(mimic.permutacao())
-
-    def permutations(string):
-        if len(string) == 1:
-            return string
-
-        recursive_perms = []
-        for c in string:
-            print(f'c in string: {c}')
-            teste = string.replace(c,'',1)
-            print(f'string.replace: {teste}')
-            for perm in permutations(string.replace(c,'',1)):
-                print(f'perm: {perm}')
-                print(f'perm: {c+perm}')
-                recursive_perms.append(c+perm)
-
-
-        return set(recursive_perms)
-    
-    print(permutations('par'))
-    # print(len(permutations('par')))
-
-
-
-
+        return num * self.numero_permutacoes(num - 1) 

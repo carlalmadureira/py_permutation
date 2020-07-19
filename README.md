@@ -22,7 +22,7 @@ Then to get our container running:
 
     docker run -it permutations 
 
-(here we have to add the -it command together, we need to make it interactible so you can enter whatever word you would like to see the combinations)
+(here we have to add the -it command together, we need to make it interactable so you can enter whatever word you would like to see the combinations)
 
 
 ## License
