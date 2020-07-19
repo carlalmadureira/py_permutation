@@ -17,7 +17,8 @@ class Mimic:
             letras_restantes = "".join([rest for rest in palavra if rest != _ ])
             ls_permutacao.append(_)
             ls_permutacao.append(letras_restantes)
-            [ls_permutacao.append(_ + i) for i in self.permutacoes(letras_restantes)] 
+            for i in self.permutacoes(letras_restantes):
+                ls_permutacao.append(_ + i) 
                 
         return set(ls_permutacao)
 

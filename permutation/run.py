@@ -9,7 +9,7 @@ def run() -> None:
     qtd_permutacoes = mimic.numero_permutacoes(len(palavra))
     permutacoes = mimic.permutacoes(palavra)
 
-    print(colored(f'\n A quantidade de possíveis permutações é: {qtd_permutacoes} \n', color='magenta'))
+    print(colored(f'\n A quantidade de possíveis permutações na palavra (sem letras soltas) é: {qtd_permutacoes} \n', color='magenta'))
     print(colored(f'\n A quantidade de permutações *únicas* é: {len(permutacoes)} \n', color='magenta'))
     print(colored(f'\n As permutações únicas são: ', color='magenta'))
     print(colored(f'{permutacoes}', color='magenta', attrs=['bold']))
