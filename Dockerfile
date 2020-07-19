@@ -19,10 +19,11 @@ RUN \
 RUN apk add --no-cache pcre
 
 WORKDIR /permutation
-COPY ./permutation .
+ADD ./permutation .
 
+ADD ./requirements.txt .
 RUN pip install -r requirements.txt
 
 RUN rm -rf /var/cache/apk/*
 
-CMD [ “python3”, “./teste_crawler/run_spider.py” ]
+CMD ["sh", "run.sh"]
