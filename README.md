@@ -1,4 +1,4 @@
-# Word Permutation 
+# Permutations Generator (Using Letters of a Word)
 
 This repo is a simple dockerized python application that uses recursion to return: 
 
